@@ -7,7 +7,7 @@ assessing **salaried** loan applicants, including those with limited credit hist
 > The lender makes and records the final decision.
 
 ## Status
-Work in progress (15-day build). Currently: **Day 1, project setup and dataset inspection.**
+Work in progress.
 
 ## What the system does
 1. **ML risk estimate:** a model trained on historical loan data estimates the likelihood of
