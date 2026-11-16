@@ -53,6 +53,9 @@ SQLite, Joblib.
 - **Bank history is not verified.** Real verification of employment, bank accounts, or PAN
   requires the lender's own checks or consent-based, regulated channels.
 - The first version supports **salaried applicants only**.
+- The model uses education level, which can act as a proxy for social background. A lender
+  should review this choice before real use. Its contribution to model performance was not
+  separately measured.
 
 ## Privacy
 Uploaded documents, the SQLite database, raw data, and secrets are excluded from Git through
