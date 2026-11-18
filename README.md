@@ -56,6 +56,10 @@ SQLite, Joblib.
 - The model uses education level, which can act as a proxy for social background. A lender
   should review this choice before real use. Its contribution to model performance was not
   separately measured.
+- The model has modest discriminating power (test ROC-AUC about 0.64). Flagging the highest-scoring
+  20% of applicants for review catches about a third of those with recorded repayment difficulty;
+  most flagged applicants did not have difficulties.
+- Scores are calibrated to the historical Home Credit base rate (about 8.7%), not to Indian borrowers.
 
 ## Privacy
 Uploaded documents, the SQLite database, raw data, and secrets are excluded from Git through
