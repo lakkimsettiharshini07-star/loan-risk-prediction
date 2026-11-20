@@ -4,7 +4,7 @@ A machine-learning **decision-support prototype** for microfinance and small pri
 assessing **salaried** loan applicants, including those with limited credit history.
 
 > **This system never approves or rejects an applicant.** It gives the lender evidence.
-> The lender makes and records the final decision.
+> The final decision is made by the lender, outside this prototype.
 
 ## Status
 Work in progress.
@@ -53,6 +53,8 @@ SQLite, Joblib.
 - **Bank history is not verified.** Real verification of employment, bank accounts, or PAN
   requires the lender's own checks or consent-based, regulated channels.
 - The first version supports **salaried applicants only**.
+- The prototype stores nothing between sessions: it keeps no applicant history and records
+  no lender decisions.
 - The model uses education level, which can act as a proxy for social background. A lender
   should review this choice before real use. Its contribution to model performance was not
   separately measured.
@@ -71,7 +73,7 @@ SQLite, Joblib.
   ratio does not guarantee repayment.
 
 ## Privacy
-Uploaded documents, the SQLite database, raw data, and secrets are excluded from Git through
+Uploaded documents, raw data, and secrets are excluded from Git through
 `.gitignore`. Use only synthetic documents for demonstrations.
 
 ## Future work
@@ -79,6 +81,7 @@ Uploaded documents, the SQLite database, raw data, and secrets are excluded from
 - Consent-based bank data through India's Account Aggregator framework.
 - PAN and employer verification through authorised channels.
 - Retraining and validation on real Indian lender data.
+- Persistent storage of applications, assessments and lender decisions.
 
 ## Project structure
 ```
@@ -86,7 +89,7 @@ LoanRisk/
   data/raw, data/processed
   notebooks/        exploratory analysis
   models/           saved model pipeline
-  src/              data, features, training, prediction, OCR, database modules
+    src/              data, features, training, prediction, OCR and analysis modules
   uploads/          temporary document storage (not committed)
   app.py            Streamlit application
 ```
