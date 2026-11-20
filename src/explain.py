@@ -113,12 +113,21 @@ def explain_assessment(app, bundle=None, income_basis=INCOME_BASIS_DEFAULT):
                         "effect": effect, "direction": direction})
     factors.sort(key=lambda f: abs(f["effect"]), reverse=True)
 
+    loan_effect = next(f for f in factors if f["factor"] == LOAN_FACTOR)
+    loan_note = []
+    if loan_effect["direction"] == "lowers":
+        loan_note = [
+            "The loan size and instalment factor lowers the estimate because, in the "
+            "historical data, larger loans relative to income did not go with more "
+            "recorded difficulty. This does not mean a heavy loan is safe. The "
+            "affordability indicators show the repayment burden separately."
+        ]
     return {
         "probability": probability,
         "reference_probability": reference,
         "factors": factors,
         "warnings": out_of_range_warnings(features, bundle),
-        "notes": [
+        "notes": loan_note+[
             "Each effect is the change in the estimated probability if that factor were "
             "average, with the other factors as entered. The effects do not add up "
             "exactly to the difference from the reference.",
