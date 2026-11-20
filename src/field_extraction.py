@@ -36,6 +36,9 @@ NET_LABELS = [
     r"net\s+(?:salary|pay|amount\s+payable|amount|payable|take\s+home)",
     r"take[\s-]*home(?:\s+(?:pay|salary))?",
 ]
+DEDUCTION_LABELS = [
+    r"tot[a-z]{1,2}\s+deductions?",
+]
 
 # A word that usually ends a company name (used only for the header guess)
 COMPANY_SUFFIX = re.compile(
@@ -135,6 +138,7 @@ def extract_fields(text):
         "employer_name": _field(employer, employer_source),
         "gross_salary": _field(find_labelled_amount(lines, GROSS_LABELS), "labelled"),
         "net_salary": _field(find_labelled_amount(lines, NET_LABELS), "labelled"),
+        "total_deductions": _field(find_labelled_amount(lines, DEDUCTION_LABELS), "labelled"),
         "pay_period": _field(period, "labelled"),
         "pay_period_parsed": parse_period(period),
     }
