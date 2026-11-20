@@ -60,6 +60,11 @@ SQLite, Joblib.
   20% of applicants for review catches about a third of those with recorded repayment difficulty;
   most flagged applicants did not have difficulties.
 - Scores are calibrated to the historical Home Credit base rate (about 8.7%), not to Indian borrowers.
+- The document check was tested only on synthetic slips with simple layouts.
+- The dataset does not state the time basis of its income and annuity columns. The app uses
+  monthly income and the monthly instalment as typed. In a sensitivity test with five example
+  profiles, the alternative mapping (monthly income x 12) changed predicted probabilities by
+  at most about 0.013 and one risk category. This was not validated on real data.
 
 ## Privacy
 Uploaded documents, the SQLite database, raw data, and secrets are excluded from Git through
