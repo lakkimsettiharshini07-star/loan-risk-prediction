@@ -65,6 +65,10 @@ SQLite, Joblib.
   monthly income and the monthly instalment as typed. In a sensitivity test with five example
   profiles, the alternative mapping (monthly income x 12) changed predicted probabilities by
   at most about 0.013 and one risk category. This was not validated on real data.
+- Affordability indicators use gross monthly income and only the requested loan's
+  instalment. Other obligations, tax and living costs are not collected. The burden labels
+  use illustrative thresholds (30% and 50% of monthly income), not regulatory limits. A good
+  ratio does not guarantee repayment.
 
 ## Privacy
 Uploaded documents, the SQLite database, raw data, and secrets are excluded from Git through

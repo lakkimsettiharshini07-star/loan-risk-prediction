@@ -82,6 +82,10 @@ if __name__ == "__main__":
     print(pd.DataFrame({"mean predicted": mean_pred,
                         "actual share": frac_pos}).round(4).to_string())
 
+        # Reference point for explanations: the average transformed training applicant
+    prep = pipe.named_steps["prep"]
+    reference_means = prep.transform(X_train).mean(axis=0)
+
     # Save the pipeline together with everything the app needs to use it correctly
     MODEL_PATH.parent.mkdir(exist_ok=True)
     joblib.dump({
@@ -94,6 +98,8 @@ if __name__ == "__main__":
         "numeric_features": NUMERIC_FEATURES,
         "categorical_features": CATEGORICAL_FEATURES,
         "n_train": len(y_train),
+        "reference_means": [float(v) for v in reference_means],
+        "feature_names": [str(n) for n in prep.get_feature_names_out()],
     }, MODEL_PATH)
     print()
     print("Saved:", MODEL_PATH)
